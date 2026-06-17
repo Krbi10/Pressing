@@ -7,6 +7,7 @@ import { fileURLToPath } from 'url';
 
 import authRoutes from './routes/auth.js';
 import teamRoutes from './routes/teams.js';
+import predictionRoutes from './routes/predictions.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const app = express();
@@ -19,6 +20,7 @@ app.use(express.json({ limit: '1mb' }));
 app.get('/api/health', (_req, res) => res.json({ ok: true, name: 'PRESSING API' }));
 app.use('/api/auth', authRoutes);
 app.use('/api/teams', teamRoutes);
+app.use('/api/predictions', predictionRoutes);
 
 // U produkciji serviraj izgrađeni React (client/dist)
 const clientDist = join(__dirname, '..', 'client', 'dist');
